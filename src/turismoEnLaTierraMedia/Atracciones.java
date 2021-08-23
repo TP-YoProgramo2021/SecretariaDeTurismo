@@ -15,5 +15,17 @@ public class Atracciones {
 		this.cupo = cupo;
 		this.tipo = tipo;
 	}
+
+	public float getCosto() {
+		return costo;
+	}
+
+	public float getTiempo() {
+		return tiempo;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
 	
 }
