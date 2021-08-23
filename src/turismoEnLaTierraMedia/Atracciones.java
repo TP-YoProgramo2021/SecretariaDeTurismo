@@ -2,25 +2,24 @@ package turismoEnLaTierraMedia;
 
 public class Atracciones {
 
-	private String nombre;
-	private float costo;
-	private float tiempo;
+
+	private double costo;
+	private double tiempo;
 	private int cupo;
 	private String tipo;
 
-	public Atracciones(String nombre,float costo, float tiempo, int cupo, String tipo) {
-		this.nombre = nombre;
+	public Atracciones(double costo, double tiempo, int cupo, String tipo) {
 		this.costo = costo;
 		this.tiempo = tiempo;
 		this.cupo = cupo;
 		this.tipo = tipo;
 	}
 
-	public float getCosto() {
+	public double getCosto() {
 		return costo;
 	}
 
-	public float getTiempo() {
+	public double getTiempo() {
 		return tiempo;
 	}
 
