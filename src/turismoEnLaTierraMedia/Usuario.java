@@ -1,17 +1,22 @@
 package turismoEnLaTierraMedia;
 
 public class Usuario {
-	private double presupuesto;
+	private int presupuesto;
 	private double tiempoDisponible;
-	private String atraccionPreferida;
-	private float monedasGastadas;
-	private Atracciones [] itinerario = new Atracciones[3];
+	private TipoDeAtraccion atraccionPreferida;
+//	private float monedasGastadas;
+//	private Atracciones [] itinerario = new Atracciones[3];
 	
-	public Usuario(double presupuesto, double tiempoDisponible, String atraccionPreferida, float monedasGastadas) {
+	public Usuario(TipoDeAtraccion atraccionPreferida, int presupuesto, double tiempoDisponible) {
 		this.presupuesto = presupuesto;
 		this.tiempoDisponible = tiempoDisponible;
 		this.atraccionPreferida = atraccionPreferida;
-		this.monedasGastadas = monedasGastadas;
+	}
+
+	@Override
+	public String toString() {
+		return "Usuario [presupuesto=" + presupuesto + ", tiempoDisponible=" + tiempoDisponible
+				+ ", atraccionPreferida=" + atraccionPreferida + "]";
 	}
 	
 	
