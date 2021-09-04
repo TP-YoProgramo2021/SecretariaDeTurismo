@@ -16,13 +16,13 @@ public class Sistema {
 			}
 
 		
-	
+	/*
 		//Ordena atracciones de mayor a menor costo
 		System.out.println("\nOrdenar\n");
 		atracciones.sort(new CostoComparator());
 			for(Atraccion atr:atracciones) {
 				System.out.println(atr);
-			}
+			}*/
 			
 	/*		
 		//Ordena atracciones de mayor a menor tiempo
@@ -31,6 +31,15 @@ public class Sistema {
 			for(Atraccion atr:atracciones) {
 				System.out.println(atr);	
 			}*/
+			
+			
+			
+		//Ordena atracciones de mayor a menor tiempo y mayor a menor costo
+			System.out.println("\nOrdenar\n");
+			atracciones.sort(new ComparadorParaSugerencias());
+				for(Atraccion atr:atracciones) {
+					System.out.println(atr);	
+				}
 			
 		//Escribe en el archivo atraccionesOUT.txt	
 		System.out.println("\nEscribir\n");
