@@ -15,13 +15,13 @@ public class ComparadorParaSugerencias implements Comparator<Atraccion> {
 		//falta la prioridad mas alta, por promociones.
 
 		
-		if (o1.costo > o2.costo)
+		if (o1.getCosto() > o2.getCosto())
 			return -1;
-		else if (o1.costo < o2.costo)
+		else if (o1.getCosto() < o2.getCosto())
 			return 1;
-		else if (o1.tiempo > o2.tiempo)
+		else if (o1.getTiempo() > o2.getTiempo())
 			return -1;
-		else if (o1.tiempo < o2.tiempo)
+		else if (o1.getTiempo() < o2.getTiempo())
 			return 1;
 
 		else

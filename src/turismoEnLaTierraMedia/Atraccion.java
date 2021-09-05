@@ -1,11 +1,11 @@
 package turismoEnLaTierraMedia;
 
 public class Atraccion implements Getters {
-	protected String nombre;
-	protected int costo;
-	protected double tiempo;
-	protected int cupos;
-	protected TipoDeAtraccion tipoDeAtraccion;
+	private String nombre;
+	private int costo;
+	private double tiempo;
+	private int cupos;
+	private TipoDeAtraccion tipoDeAtraccion;
 
 	
 	public Atraccion(String nombre, int costo, double tiempo, int cupos, TipoDeAtraccion tipoDeAtraccion) {
