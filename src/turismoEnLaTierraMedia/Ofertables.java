@@ -1,8 +1,10 @@
 package turismoEnLaTierraMedia;
 
-public interface Getters {
+public interface Ofertables {
 public int getCosto();
 public double getTiempo();
 public TipoDeAtraccion getTipo();
-public int getCupo();
+public boolean hayCupo();
+public boolean esPromocion();
+
 }

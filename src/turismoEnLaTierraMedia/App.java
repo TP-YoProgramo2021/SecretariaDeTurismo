@@ -69,7 +69,44 @@ public class App {
 		
 		return atracciones;
 	}
-	
+	public static List<Promocion> leerPromociones() {
+		File f = new File("files/Promociones.txt");
+		Scanner sc;
+		List<Promocion> promociones = new LinkedList<Promocion>();
+		String[] line;
+		
+		try {
+			sc = new Scanner(f);
+			
+			while(sc.hasNextLine()) {
+				String[] atraccionesStr;
+				line = sc.nextLine().split("-");
+				List<Atraccion> atrDeLaPromo = new LinkedList<Atraccion>();
+				atraccionesStr = line[0].split(", ");
+				for (Atraccion atr: leerAtracciones()) {
+					for (String str: atraccionesStr) {
+						if (atr.getNombre().equals(str)) {
+							atrDeLaPromo.add(atr);
+						}
+					}
+					
+				}
+				
+				//promociones.add()
+								
+				
+				line = null;
+			}
+			
+			sc.close();
+		} catch (FileNotFoundException e) {
+			System.err.println(e.getMessage());
+		} catch (NumberFormatException e) {
+			System.err.println(e.getMessage());
+		}
+		
+		return promociones;
+	}
 	
 	
 //	public static Atracciones[] leerAtracciones() {

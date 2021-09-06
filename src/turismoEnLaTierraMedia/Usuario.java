@@ -18,6 +18,24 @@ public class Usuario {
 		return "Usuario [presupuesto=" + presupuesto + ", tiempoDisponible=" + tiempoDisponible
 				+ ", atraccionPreferida=" + atraccionPreferida + "]";
 	}
+
+	public int getPresupuesto() {
+		return presupuesto;
+	}
+
+	
+
+	public double getTiempoDisponible() {
+		return tiempoDisponible;
+	}
+
+	
+
+	public TipoDeAtraccion getAtraccionPreferida() {
+		return atraccionPreferida;
+	}
+
+	
 	
 	
 }

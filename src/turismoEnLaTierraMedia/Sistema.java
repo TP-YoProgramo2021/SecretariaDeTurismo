@@ -36,7 +36,9 @@ public class Sistema {
 			
 		//Ordena atracciones de mayor a menor tiempo y mayor a menor costo
 			System.out.println("\nOrdenar\n");
-			atracciones.sort(new ComparadorParaSugerencias());
+			usuarios = App.leerUsuarios();
+			//Agregar un for para recorrer todos los usuarios y consultarle si quiere o no quiere acptar la sugerencia
+			atracciones.sort(new ComparadorParaSugerencias(usuarios.get(1).getAtraccionPreferida()));
 				for(Atraccion atr:atracciones) {
 					System.out.println(atr);	
 				}

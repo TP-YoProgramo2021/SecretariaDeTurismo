@@ -3,6 +3,11 @@ package turismoEnLaTierraMedia;
 import java.util.Comparator;
 
 public class ComparadorParaSugerencias implements Comparator<Atraccion> {
+	private TipoDeAtraccion preferenciaUser;
+	
+	public ComparadorParaSugerencias(TipoDeAtraccion preferenciaUser) {
+		this.preferenciaUser = preferenciaUser;
+	}
 
 	@Override
 	public int compare(Atraccion o1, Atraccion o2) {
@@ -14,8 +19,14 @@ public class ComparadorParaSugerencias implements Comparator<Atraccion> {
 		
 		//falta la prioridad mas alta, por promociones.
 
+		if (this.preferenciaUser == o1.getTipo() && this.preferenciaUser != o2.getTipo()) {
+			return -1;
+		}
+		else if (this.preferenciaUser != o1.getTipo() && this.preferenciaUser == o2.getTipo()) {
+			return 1;
+		}
 		
-		if (o1.getCosto() > o2.getCosto())
+		else if (o1.getCosto() > o2.getCosto())
 			return -1;
 		else if (o1.getCosto() < o2.getCosto())
 			return 1;
@@ -26,6 +37,7 @@ public class ComparadorParaSugerencias implements Comparator<Atraccion> {
 
 		else
 			return 0;
+		
 
 	}
 

@@ -1,6 +1,6 @@
 package turismoEnLaTierraMedia;
 
-public class Atraccion implements Getters {
+public class Atraccion implements Ofertables {
 	private String nombre;
 	private int costo;
 	private double tiempo;
@@ -36,10 +36,19 @@ public class Atraccion implements Getters {
 		return this.tipoDeAtraccion;
 	}
 	@Override
-	public int getCupo() {
+	public boolean hayCupo() {
 		// TODO Auto-generated method stub
-		return this.cupos;
+		return this.cupos>0;
 	}
+	@Override
+	public boolean esPromocion() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	public String getNombre() {
+		return nombre;
+	}
+	
 
 
 }
