@@ -62,7 +62,7 @@ public class Promocion {
 			return "Promocion " + this.tipoDePromo() + ".\nIncluye " + str +"Ademas tambien incluye pero totalmente gratis: "+this.atrGratis.toString()+"\n%El precio total de este pack es: $" + this.costoTotal();
 		}
 		else {
-			return "Promocion " + this.tipoDePromo() + ".\nIncluye " + str + "\nA TAN SOLO: $" + this.costoTotal();
+			return "Promocion " + this.tipoDePromo() + ".\nIncluye " + str + "\nA TAN SOLO: $" + this.precioPorTodo;
 		}
 		
 	}

@@ -1,9 +1,13 @@
 package turismoEnLaTierraMedia;
 import java.io.File;
+//import java.nio.file.FileSystems;
+
 import java.io.FileNotFoundException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
+
+//import jdk.internal.misc.FileSystemOption;
 
 
 public class App {
@@ -91,10 +95,26 @@ public class App {
 					}
 					
 				}
-				
-				//promociones.add()
-								
-				
+//				System.out.println("-----------------");
+//				System.out.println(atrDeLaPromo);
+				if (line[2] == "0") {
+					Promocion promoDescuento = new Promocion(atrDeLaPromo, 20.0);
+					System.out.println("----------"+promoDescuento);
+					promociones.add(new Promocion(atrDeLaPromo, 20.0));
+//					System.out.println(atrDeLaPromo);
+				}
+				else if (line[2] == "1") {
+					promociones.add(new Promocion(atrDeLaPromo, Integer.parseInt(line[1])));
+//					System.out.println(promociones);
+				}
+				else {
+//					System.out.println(promociones);
+					for (Atraccion atr: leerAtracciones()) {
+						if (atr.getNombre().equals(line[2])) {
+								promociones.add(new Promocion(atrDeLaPromo, atr));
+							}
+					}
+				}
 				line = null;
 			}
 			
@@ -147,13 +167,19 @@ public class App {
 //	}
 	public static void main(String[] args) {
 		List<Usuario> users = App.leerUsuarios();
-		for (Usuario user:users) {
-			System.out.println(user);}
+//		for (Usuario user:users) {
+//			System.out.println(user);}
 		List<Atraccion> atracs = App.leerAtracciones();
-			for (Atraccion atr:atracs) {
-				System.out.println(atr);
+//		for (Atraccion atr:atracs) {
+//				System.out.println(atr);
+			}
+		List<Promocion> packs = App.leerPromociones();
+		System.out.println(packs);
+		for (Promocion pack:packs) {
+				System.out.println(pack);
 			}
 		
 	}	
 
-}
+	}
+	}
