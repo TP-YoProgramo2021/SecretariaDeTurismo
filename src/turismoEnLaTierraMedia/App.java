@@ -81,9 +81,10 @@ public class App {
 		
 		try {
 			sc = new Scanner(f);
-			
+			//String[] atraccionesStr;
 			while(sc.hasNextLine()) {
 				String[] atraccionesStr;
+				
 				line = sc.nextLine().split("-");
 				List<Atraccion> atrDeLaPromo = new LinkedList<Atraccion>();
 				atraccionesStr = line[0].split(", ");
@@ -95,20 +96,26 @@ public class App {
 					}
 					
 				}
-//				System.out.println("-----------------");
-//				System.out.println(atrDeLaPromo);
-				if (line[2] == "0") {
+				
+			System.out.println("-----------------");
+				System.out.println(atrDeLaPromo);
+				System.out.println(line[0]);
+				System.out.println(line[1]);
+				System.out.println(line[2]);
+				//if (line[2] == "0") {
+				if ( Integer.parseInt(line[2]) == 0) {
 					Promocion promoDescuento = new Promocion(atrDeLaPromo, 20.0);
 					System.out.println("----------"+promoDescuento);
 					promociones.add(new Promocion(atrDeLaPromo, 20.0));
-//					System.out.println(atrDeLaPromo);
+					System.out.println("double");
 				}
-				else if (line[2] == "1") {
+				//else if (line[2] == "1") {
+				else if (Integer.parseInt(line[2]) == 1) {
 					promociones.add(new Promocion(atrDeLaPromo, Integer.parseInt(line[1])));
-//					System.out.println(promociones);
+					System.out.println("int");
 				}
 				else {
-//					System.out.println(promociones);
+					System.out.println("lqs");
 					for (Atraccion atr: leerAtracciones()) {
 						if (atr.getNombre().equals(line[2])) {
 								promociones.add(new Promocion(atrDeLaPromo, atr));
@@ -172,14 +179,15 @@ public class App {
 		List<Atraccion> atracs = App.leerAtracciones();
 //		for (Atraccion atr:atracs) {
 //				System.out.println(atr);
-			}
+			
 		List<Promocion> packs = App.leerPromociones();
-		System.out.println(packs);
+		System.out.println("----------PACK----------");
+		System.out.println(packs); //imprime vacio
 		for (Promocion pack:packs) {
 				System.out.println(pack);
-			}
+		}
 		
-	}	
+	}
+	
+}
 
-	}
-	}
