@@ -23,10 +23,16 @@ public class App {
 			while(sc.hasNextLine()) {
 				line = sc.nextLine().split("-");
 //				System.out.println(line.toString());
-				usuarios.add(new Usuario(TipoDeAtraccion.valueOf(line[0]),
-						Integer.parseInt(line[1]),Double.parseDouble(line[2])));
+				
+				Usuario usuario = new Usuario(Integer.parseInt(line[1]), Double.parseDouble(line[2]), TipoDeAtraccion.valueOf(line[0])); 
+				usuarios.add(usuario);
 				
 				line = null;
+				
+				/*usuarios.add(new Usuario(TipoDeAtraccion.valueOf(line[0]),
+						Integer.parseInt(line[1]),Double.parseDouble(line[2])));
+				
+				line = null;*/
 			}
 			
 			sc.close();

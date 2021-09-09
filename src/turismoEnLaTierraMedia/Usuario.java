@@ -7,7 +7,7 @@ public class Usuario {
 //	private float monedasGastadas;
 //	private Atracciones [] itinerario = new Atracciones[3];
 	
-	public Usuario(TipoDeAtraccion atraccionPreferida, int presupuesto, double tiempoDisponible) {
+	public Usuario(int presupuesto, double tiempoDisponible, TipoDeAtraccion atraccionPreferida) {
 		this.presupuesto = presupuesto;
 		this.tiempoDisponible = tiempoDisponible;
 		this.atraccionPreferida = atraccionPreferida;
