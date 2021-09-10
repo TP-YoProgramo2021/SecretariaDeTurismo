@@ -1,9 +1,43 @@
 package turismoEnLaTierraMedia;
 
-public class PromocionesAxB extends Promocion{
+import java.util.List;
 
-	public PromocionesAxB(Atracciones atraccion1, Atracciones atraccion2, Atracciones atraccion3) {
-		super((atraccion1.getCosto() + atraccion2.getCosto()), atraccion1.getTiempo() + atraccion2.getTiempo() + atraccion3.getTiempo(), atraccion1.getTipo());
+public class PromocionesAxB extends Promocion implements Ofertables{
+
+	public PromocionesAxB(List<Atraccion> atracciones, Atraccion atraccionGratis) {
+		super(atracciones, atraccionGratis);
+	
+	}
+
+	
+	@Override
+	public int getCosto() {
+		
+		return 0;
+	}
+
+	@Override
+	public double getTiempo() {
+		// TODO Esbozo de método generado automáticamente
+		return 0;
+	}
+
+	@Override
+	public TipoDeAtraccion getTipo() {
+		// TODO Esbozo de método generado automáticamente
+		return null;
+	}
+
+	@Override
+	public boolean hayCupo() {
+		// TODO Esbozo de método generado automáticamente
+		return false;
+	}
+
+	@Override
+	public boolean esPromocion() {
+		// TODO Esbozo de método generado automáticamente
+		return false;
 	}
 	
 }
