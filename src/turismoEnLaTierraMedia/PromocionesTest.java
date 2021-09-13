@@ -24,9 +24,9 @@ public class PromocionesTest {
 	Atraccion Erebor;
 	Atraccion BosqueNegro;
 	
-	PromocionesPorcentuales aventura;
-	PromocionesAbsolutas degustacion;
-	PromocionesAxB paisajes;
+	PromocionPorcentual aventura;
+	PromocionAbsoluta degustacion;
+	PromocionAxB paisajes;
 	
 	@Before
 	public void setUp() {
@@ -58,9 +58,9 @@ public class PromocionesTest {
 		atracciones3.add(Lothlorien);
 		atracciones3.add(LaComarca);
 		
-		aventura = new PromocionesPorcentuales(atracciones1, 20);
-		degustacion = new PromocionesAbsolutas(atracciones2, 36);
-		paisajes = new PromocionesAxB(atracciones3, Erebor);
+		aventura = new PromocionPorcentual(atracciones1, 20);
+		degustacion = new PromocionAbsoluta(atracciones2, 36);
+		paisajes = new PromocionAxB(atracciones3, Erebor);
 		
 	}
 

@@ -100,30 +100,23 @@ public class AdministradorDeArchivos2 {
 					
 				}
 				
-			System.out.println("-----------------");
-				System.out.println(atrDeLaPromo);
-				System.out.println(line[0]);
-				System.out.println(line[1]);
-				System.out.println(line[2]);
-				//if (line[2] == "0") {
 				if ( Integer.parseInt(line[2]) == 0) {
-					Promocion promoDescuento = new Promocion(atrDeLaPromo, 20.0);
-					System.out.println("----------"+promoDescuento);
-					promociones.add(new Promocion(atrDeLaPromo, 20.0));
-					System.out.println("double");
+					Promocion promoDescuento = new PromocionPorcentual(atrDeLaPromo, 20.0);
+					promociones.add(promoDescuento);
+
 				}
-				//else if (line[2] == "1") {
 				else if (Integer.parseInt(line[2]) == 1) {
-					promociones.add(new Promocion(atrDeLaPromo, Integer.parseInt(line[1])));
-					System.out.println("int");
+					promociones.add(new PromocionAbsoluta(atrDeLaPromo, Integer.parseInt(line[1])));
 				}
 				else {
-					System.out.println("lqs");
 					for (Atraccion atr: leerAtracciones()) {
-						if (atr.getNombre().equals(line[2])) {
-								promociones.add(new Promocion(atrDeLaPromo, atr));
+						
+						if (atr.getNombre().equals(line[1])) {
+								promociones.add(new PromocionAxB(atrDeLaPromo, atr));
+								
 							}
 					}
+					System.out.println(promociones.size());
 				}
 				line = null;
 			}

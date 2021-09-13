@@ -12,14 +12,14 @@ public class Sistema2 {
 
 	
 	public static void main(String[] args) {
-		
+		List<Ofertables> sugerencia = new LinkedList<Ofertables>();
 		List<Usuario> users = AdministradorDeArchivos2.leerUsuarios();
 		for (Usuario user:users) {
 			System.out.println(user);}
 	
 		List<Promocion> packs = AdministradorDeArchivos2.leerPromociones();
 		System.out.println("----------PACK----------");
-		System.out.println(packs); //imprime vacio
+//		System.out.println(packs); //imprime vacio
 		for (Promocion pack:packs) {
 				System.out.println(pack);
 		}
@@ -40,9 +40,12 @@ public class Sistema2 {
 		//Ordena atracciones primero por preferencia del usuario, de mayor a menor tiempo y mayor a menor costo.
 			System.out.println("\nOrdenar\n");
 			usuarios =AdministradorDeArchivos2.leerUsuarios();
+			sugerencia.addAll(packs);
+			sugerencia.addAll(atracciones);
+			
 			//Agregar un for para recorrer todos los usuarios y consultarle si quiere o no quiere acptar la sugerencia
-			atracciones.sort(new ComparadorParaSugerencias(usuarios.get(1).getAtraccionPreferida()));
-				for(Atraccion atr:atracciones) {
+			sugerencia.sort(new ComparadorParaSugerencias(usuarios.get(1).getAtraccionPreferida()));
+				for(Ofertables atr:sugerencia) {
 					System.out.println(atr);	
 				}
 				
