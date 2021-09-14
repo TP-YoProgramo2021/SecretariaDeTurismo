@@ -1,0 +1,20 @@
+✅que muestre la promocion primero
+
+✅cambiar atributos: tiempo dinero(en usuario) y cupo en atraccion a medida que vaya aceptando
+
+✅guardar las atracciones que aceptó en un array de itinerario
+✅refinar main
+✅falta comparator
+
+✅no hay herencia
+✅falta puedeComprar
+
+✅falta prioridad mas alta por promociones
+
+
+✅if usuario puede comprar? le muestan, no hace falta hacer un remove ni clone
+
+
+❌ya compro x atraccion, que lo que haga seria recorrer el itinerari oy fijarse si alguna es equals o si alguna es promocion, recorrer sus promociones y fijarse con equals (Preguntar a Ignacio)
+❌archivos txt de salida totalizador de itinerarios y el ofertador de atracciones/paquetes.
+❌fantan test

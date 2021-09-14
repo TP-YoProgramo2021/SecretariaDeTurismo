@@ -30,6 +30,10 @@ public abstract class Promocion implements Ofertables{
 		
 	}
 	@Override
+	public List<Atraccion> atraccionesIncluidas(){
+		return this.atracciones;
+	}
+	@Override
 	public abstract int getCosto() ;
 	
 	@Override
@@ -57,6 +61,6 @@ public abstract class Promocion implements Ofertables{
 	}
 	public TipoDeAtraccion getTipo() {return this.atracciones.get(0).getTipo();}
 
-
+	
 	
 }

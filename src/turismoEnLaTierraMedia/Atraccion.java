@@ -1,5 +1,9 @@
 package turismoEnLaTierraMedia;
 
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Objects;
+
 public class Atraccion implements Ofertables {
 	private String nombre;
 	private int costo;
@@ -48,7 +52,33 @@ public class Atraccion implements Ofertables {
 	public String getNombre() {
 		return nombre;
 	}
-	
-
-
+	public void restarUnCupo() throws Exception {
+		if (this.cupos >= 1)this.cupos-=1;
+		else {
+			throw new Exception("No quedaban cupos disponibles para esta atraccion");
+		}
+	}
+	@Override
+	public List<Atraccion> atraccionesIncluidas() {
+		List<Atraccion> incluidas = new LinkedList<Atraccion>();
+		incluidas.add(this);
+		return incluidas;
+	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(costo, cupos, nombre, tiempo, tipoDeAtraccion);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Atraccion other = (Atraccion) obj;
+		return costo == other.costo && cupos == other.cupos && Objects.equals(nombre, other.nombre)
+				&& Double.doubleToLongBits(tiempo) == Double.doubleToLongBits(other.tiempo)
+				&& tipoDeAtraccion == other.tipoDeAtraccion;
+	}
 }

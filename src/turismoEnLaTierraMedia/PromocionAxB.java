@@ -1,5 +1,6 @@
 package turismoEnLaTierraMedia;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class PromocionAxB extends Promocion implements Ofertables{
@@ -32,7 +33,13 @@ public class PromocionAxB extends Promocion implements Ofertables{
 			
 		}
 	
-
+	@Override
+	public List<Atraccion> atraccionesIncluidas(){
+		List<Atraccion> incluidas = new LinkedList<Atraccion>();
+		incluidas.addAll(this.atracciones);
+		incluidas.add(atrGratis);
+		return incluidas;
+	}
 	@Override
 	public double getTiempo() {
 		double tiempoTotal = 0;

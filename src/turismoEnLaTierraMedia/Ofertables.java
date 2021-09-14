@@ -1,10 +1,13 @@
 package turismoEnLaTierraMedia;
 
+import java.util.List;
+
 public interface Ofertables {
 public int getCosto();
 public double getTiempo();
 public TipoDeAtraccion getTipo();
 public boolean hayCupo();
 public boolean esPromocion();
+public List<Atraccion> atraccionesIncluidas();
 
 }
