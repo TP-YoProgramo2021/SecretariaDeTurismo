@@ -9,11 +9,17 @@ public class Usuario {
 	private TipoDeAtraccion atraccionPreferida;
 //	private float monedasGastadas;
 	private List<Ofertables> itinerario = new LinkedList<Ofertables> ();
+	private final int PRESUPUESTO_INICIAL;
+	private final double TIEMPO_DISPONIBLE_INICIAL;
+	private String nombre;
 	
-	public Usuario(TipoDeAtraccion atraccionPreferida, int presupuesto, double tiempoDisponible) {
+	public Usuario(TipoDeAtraccion atraccionPreferida, int presupuesto, double tiempoDisponible, String nombre) {
 		this.presupuesto = presupuesto;
 		this.tiempoDisponible = tiempoDisponible;
 		this.atraccionPreferida = atraccionPreferida;
+		this.PRESUPUESTO_INICIAL=presupuesto;
+		this.TIEMPO_DISPONIBLE_INICIAL=tiempoDisponible;
+		this.nombre=nombre;
 	}
 	@Override
 	public String toString() {
@@ -23,22 +29,33 @@ public class Usuario {
 	public int getPresupuesto() {
 		return presupuesto;
 	}
+	public String getNombre() {
+		return this.nombre;
+	}
 	public double getTiempoDisponible() {
 		return tiempoDisponible;
+	}
+	public List<Ofertables> getItinerario(){
+		return this.itinerario;
 	}
 	public TipoDeAtraccion getAtraccionPreferida() {
 		return atraccionPreferida;
 	}
 	public boolean puedeComprar(Ofertables oferta) {
-		boolean noEstaEnItinerario=true;
 		for (Ofertables atraccion:this.itinerario) {
 			if (atraccion.equals(oferta)) {
-				noEstaEnItinerario=false;
+				System.out.println("Entro al if");
+				return false;
 			}
+			
+			
+			System.out.println("Fuera del if");
+			
 		}
-		return (noEstaEnItinerario && this.presupuesto >= oferta.getCosto()) && (this.getTiempoDisponible()>=oferta.getTiempo()) && (oferta.hayCupo());	
+		System.out.println("Fuera del for");
+		return (this.presupuesto >= oferta.getCosto()) && (this.getTiempoDisponible()>=oferta.getTiempo()) && (oferta.hayCupo());	
 				}
-	public void cobrar(Atraccion atraccion) throws Exception {
+	public void cobrar(Ofertables atraccion) throws Exception {
 		if(this.presupuesto >= atraccion.getCosto()) {
 			this.presupuesto -= atraccion.getCosto();
 		}
@@ -47,7 +64,7 @@ public class Usuario {
 		}
 	
 	}
-	public void restarTiempo(Atraccion atraccion) throws Exception {
+	public void restarTiempo(Ofertables atraccion) throws Exception {
 		if(this.tiempoDisponible >= atraccion.getTiempo()) {
 			this.tiempoDisponible -= atraccion.getTiempo();
 		}
@@ -56,18 +73,34 @@ public class Usuario {
 		}
 			
 	}
+	public int dineroGastado() {
+		return this.PRESUPUESTO_INICIAL-this.presupuesto;
+	}
+	public double tiempoRequerido() {
+		return this.TIEMPO_DISPONIBLE_INICIAL - this.tiempoDisponible;
+	}
 	public void agregarAlItinerario(Ofertables oferta) {
 			for (Atraccion atr2: oferta.atraccionesIncluidas()) {
 				try {
-						atr2.restarUnCupo();
+						
 						this.itinerario.add(atr2);
-						this.cobrar(atr2);
-						this.restarTiempo(atr2);
+						atr2.restarUnCupo();
+						
 					
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
 				}
-	System.out.println("¡Ya fue agregado al itinerario!");
+			try {
+				this.cobrar(oferta);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			try {
+				this.restarTiempo(oferta);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+	System.out.println("\n¡Ya fue agregado al itinerario!\n");
 	}
 }

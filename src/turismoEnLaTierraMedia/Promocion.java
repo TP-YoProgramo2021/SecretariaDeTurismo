@@ -60,7 +60,10 @@ public abstract class Promocion implements Ofertables{
 		return tiempoTotal;
 	}
 	public TipoDeAtraccion getTipo() {return this.atracciones.get(0).getTipo();}
-
+	@Override
+	public boolean esOContiene(Ofertables oferta) {
+		return false;
+	}
 	
 	
 }

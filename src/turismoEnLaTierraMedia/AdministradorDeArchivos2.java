@@ -22,7 +22,7 @@ public class AdministradorDeArchivos2 {
 				line = sc.nextLine().split("-");
 //				System.out.println(line.toString());
 				usuarios.add(new Usuario(TipoDeAtraccion.valueOf(line[0]),
-						Integer.parseInt(line[1]),Double.parseDouble(line[2])));
+						Integer.parseInt(line[1]),Double.parseDouble(line[2]), line[3] ) );
 				
 				line = null;
 			}
@@ -76,7 +76,7 @@ public class AdministradorDeArchivos2 {
 	
 	
 	
-	public static List<Promocion> leerPromociones() {
+	public static List<Promocion> leerPromociones(List <Atraccion> atracciones) {
 		File f = new File("files/Promociones.txt");
 		Scanner sc;
 		List<Promocion> promociones = new LinkedList<Promocion>();
@@ -91,7 +91,7 @@ public class AdministradorDeArchivos2 {
 				line = sc.nextLine().split("-");
 				List<Atraccion> atrDeLaPromo = new LinkedList<Atraccion>();
 				atraccionesStr = line[0].split(", ");
-				for (Atraccion atr: leerAtracciones()) {
+				for (Atraccion atr: atracciones) {
 					for (String str: atraccionesStr) {
 						if (atr.getNombre().equals(str)) {
 							atrDeLaPromo.add(atr);
@@ -131,14 +131,14 @@ public class AdministradorDeArchivos2 {
 		return promociones;
 	}
 	
-	public static void escribirAtracciones(List<Atraccion> atracciones) {
+	public static void escribirAtracciones(List<Ofertables> atracciones) {
 		File f = new File("files/atraccionesOUT.txt");
 		PrintWriter pw;
 		
 		try {
 			pw = new PrintWriter(f);
 			
-			for(Atraccion v : atracciones) 
+			for(Ofertables v : atracciones) 
 				pw.write(v.toString()+"\n");
 			
 			pw.close();

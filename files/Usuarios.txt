@@ -1,4 +1,4 @@
-Aventura-100-24
-Paisaje-100-5
-Degustacion-36-8
-Paisaje-120-6
+Aventura-100-24-papa
+Paisaje-100-5-pepe
+Degustacion-36-8-pipi
+Paisaje-120-6-popo

@@ -13,16 +13,18 @@ public class Sistema2 {
 	
 	public static void main(String[] args) {
 		List<Ofertables> sugerencia = new LinkedList<Ofertables>();
-		List<Usuario> users = AdministradorDeArchivos2.leerUsuarios();
-		List<Promocion> packs = AdministradorDeArchivos2.leerPromociones();
 		List<Atraccion> atracciones = AdministradorDeArchivos2.leerAtracciones();
+		List<Usuario> users = AdministradorDeArchivos2.leerUsuarios();
+		List<Promocion> packs = AdministradorDeArchivos2.leerPromociones(atracciones);
+		sugerencia.addAll(packs);
+		sugerencia.addAll(atracciones);
 		try (Scanner scanner = new Scanner(System.in)) {
 			for (Usuario usuario:users) {
-				sugerencia.addAll(packs);
-				sugerencia.addAll(atracciones);
+				System.out.println("Bienvenido "+ usuario.getNombre());
 				sugerencia.sort(new ComparadorParaSugerencias(usuario.getAtraccionPreferida()));
-//				System.out.println(sugerencia);
+				
 				for(Ofertables oferta:sugerencia) {
+//				System.out.println(oferta);
 					
 					if (usuario.puedeComprar(oferta)) {
 						System.out.println(oferta);	
@@ -36,14 +38,16 @@ public class Sistema2 {
 //						System.out.println("La oferta:\n"+oferta.toString()+"\nNo puede ser adquirida por este usuario\n"+usuario.toString()+"\n------------------------------------------");
 //					}
 				}
-				System.out.println("Terminaron las sugerencias para este usuario");
+				System.out.println("Terminaron las sugerencias para este usuario\nPresione enter para continuar...");
 				String in1 = scanner.nextLine();
+				System.out.println("\nEscribir\n");
+				AdministradorDeArchivos2.escribirAtracciones(usuario.getItinerario());	
 			}
 			String in1 = scanner.nextLine();
 			System.out.println(in1);
 		}
 		//Escribe en el archivo atraccionesOUT.txt	
 		System.out.println("\nEscribir\n");
-		AdministradorDeArchivos2.escribirAtracciones(atracciones);	
+//		AdministradorDeArchivos2.escribirAtracciones(atracciones);	
 	}	
 }
