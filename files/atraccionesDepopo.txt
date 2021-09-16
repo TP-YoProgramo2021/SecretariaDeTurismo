@@ -1,4 +1,0 @@
-Atraccion Erebor tiene un costo de 12 monedas, es de tipo Paisaje, y se debe disponer de 3.0hs para recorrerla. Tiene un cupo de 29 personas
-Atraccion Mordor tiene un costo de 25 monedas, es de tipo Aventura, y se debe disponer de 3.0hs para recorrerla. Tiene un cupo de 2 personas
-El monto total por este itinerario es: 37
-El tiempo requerido para cumplir con el itinerario es: 6.0hs.

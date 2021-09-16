@@ -40,14 +40,12 @@ public class App {
 				}
 				System.out.println("Terminaron las sugerencias para este usuario\nPresione enter para continuar...");
 				String in1 = scanner.nextLine();
-				System.out.println("\nEscribir\n");
+//				System.out.println("\nEscribir\n");
 				AdministradorDeArchivos.escribirAtracciones(usuario.getItinerario(), usuario);	
 			}
 			String in1 = scanner.nextLine();
 			System.out.println(in1);
 		}
-		//Escribe en el archivo atraccionesOUT.txt	
-		System.out.println("\nEscribir\n");
-//		AdministradorDeArchivos2.escribirAtracciones(atracciones);	
+		
 	}	
 }

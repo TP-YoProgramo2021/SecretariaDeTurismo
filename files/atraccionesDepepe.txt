@@ -1,4 +1,0 @@
-Atraccion Erebor tiene un costo de 12 monedas, es de tipo Paisaje, y se debe disponer de 3.0hs para recorrerla. Tiene un cupo de 30 personas
-Atraccion Abismo de Helm tiene un costo de 5 monedas, es de tipo Paisaje, y se debe disponer de 2.0hs para recorrerla. Tiene un cupo de 14 personas
-El monto total por este itinerario es: 17
-El tiempo requerido para cumplir con el itinerario es: 5.0hs.

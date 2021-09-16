@@ -137,6 +137,7 @@ public class AdministradorDeArchivos {
 		try {
 			pw = new PrintWriter(f);
 			try {
+				pw.write("Este es el itinerario de "+usuario.getNombre()+"\n");
 				for(Ofertables v : atracciones) 
 					pw.write(v.toString()+"\n");
 				pw.write("El monto total por este itinerario es: "+usuario.dineroGastado()+"\nEl tiempo requerido para cumplir con el itinerario es: "+usuario.tiempoRequerido()+"hs.");
