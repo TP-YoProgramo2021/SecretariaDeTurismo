@@ -1,4 +1,4 @@
-package turismoEnLaTierraMedia;
+package turismoEnLaTierraMediaTest;
 
 import static org.junit.Assert.*;
 
@@ -7,6 +7,13 @@ import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import turismoEnLaTierraMedia.Atraccion;
+import turismoEnLaTierraMedia.PromocionAbsoluta;
+import turismoEnLaTierraMedia.PromocionAxB;
+import turismoEnLaTierraMedia.PromocionPorcentual;
+import turismoEnLaTierraMedia.TipoDeAtraccion;
+import turismoEnLaTierraMedia.Usuario;
 
 public class PromocionesTest {
 	

@@ -19,10 +19,8 @@ public class Atraccion implements Ofertables {
 		this.cupos = cupos;
 		this.tipoDeAtraccion = tipoDeAtraccion;
 	}
-	@Override
 	public String toString() {
-		return "Atraccion [nombre=" + this.nombre + ", costo=" + this.costo + ", tiempo=" + this.tiempo + ", cupos=" + this.cupos
-				+ ", tipoDeAtraccion=" + this.tipoDeAtraccion + "]";
+		return ("Atraccion "+this.getNombre()+" tiene un costo de "+this.getCosto()+" monedas, es de tipo "+this.getTipo()+ ", y se debe disponer de "+this.getTiempo()+"hs para recorrerla"+". Tiene un cupo de "+this.cupos+ " personas");
 	}
 	@Override
 	public int getCosto() {
@@ -80,5 +78,9 @@ public class Atraccion implements Ofertables {
 		return costo == other.costo && cupos == other.cupos && Objects.equals(nombre, other.nombre)
 				&& Double.doubleToLongBits(tiempo) == Double.doubleToLongBits(other.tiempo)
 				&& tipoDeAtraccion == other.tipoDeAtraccion;
+	}
+	@Override
+	public boolean esOContiene(Ofertables oferta) {
+		return this.equals(oferta);
 	}
 }

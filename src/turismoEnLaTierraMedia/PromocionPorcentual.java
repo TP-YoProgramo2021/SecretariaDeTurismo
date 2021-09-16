@@ -22,7 +22,11 @@ public class PromocionPorcentual extends Promocion {
 	}
 	@Override
 	public String toString() {
-		return "Pack "+ getTipo() +" [atracciones=" + atracciones + ", porcentajeDesc=" + porcentajeDesc
-				+ ", getCosto()=" + getCosto() + ", getTiempo()=" + getTiempo() + "]";
+		String nombres = "";
+		for (Atraccion atr: this.atracciones) {
+			nombres+=(atr.getNombre() + "-");
+		}
+		nombres=nombres.substring(0, nombres.length()-1);
+		return ("Promocion "+this.getTipo()+ " incluye : "+ nombres +" a un "+this.porcentajeDesc*100+"% off"+", con un costo final de "+this.getCosto() +" monedas. Debe disponer de "+this.getTiempo()+"hs para recorrerlo.");
 	}
 }

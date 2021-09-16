@@ -51,7 +51,11 @@ public class PromocionAxB extends Promocion implements Ofertables{
 
 	@Override
 	public String toString() {
-		return "Pack "+ getTipo() +" [atracciones=" + atracciones + ", atrGratis=" + atrGratis + ", getCosto()=" + getCosto()
-				+ ", getTiempo()=" + getTiempo() + "]";
-	}	
+		String nombres = "";
+		for (Atraccion atr: this.atracciones) {
+			nombres+=(atr.getNombre() + "-");
+		}
+		nombres=nombres.substring(0, nombres.length()-1);
+		return ("Promocion "+this.getTipo()+ " incluye "+ nombres +" y de regalo "+this.atrGratis.getNombre()+" a un costo de "+this.getCosto()+" monedas. Debe disponer de "+this.getTiempo()+"hs para recorrerlo." );
+	}
 }

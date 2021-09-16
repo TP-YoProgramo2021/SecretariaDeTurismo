@@ -1,199 +1,53 @@
 package turismoEnLaTierraMedia;
-import java.io.File;
-//import java.nio.file.FileSystems;
 
-import java.io.FileNotFoundException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
-//import jdk.internal.misc.FileSystemOption;
-
-
 public class App {
-	public static List<Usuario> leerUsuarios() {
-		File f = new File("files/Usuarios.txt");
-		Scanner sc;
-		List<Usuario> usuarios = new LinkedList<Usuario>();
-		String[] line;
-		
-		try {
-			sc = new Scanner(f);
-			
-			while(sc.hasNextLine()) {
-				line = sc.nextLine().split("-");
-//				System.out.println(line.toString());
-				
-				Usuario usuario = new Usuario(Integer.parseInt(line[1]), Double.parseDouble(line[2]), TipoDeAtraccion.valueOf(line[0])); 
-				usuarios.add(usuario);
-				
-				line = null;
-				
-				/*usuarios.add(new Usuario(TipoDeAtraccion.valueOf(line[0]),
-						Integer.parseInt(line[1]),Double.parseDouble(line[2])));
-				
-				line = null;*/
-			}
-			
-			sc.close();
-		} catch (FileNotFoundException e) {
-			System.err.println(e.getMessage());
-		} catch (NumberFormatException e) {
-			System.err.println(e.getMessage());
-		}
-		
-		return usuarios;
-	}
+	public static List<Usuario> usuarios;
+	//public static List<Atraccion> atracciones;
+	public static LinkedList<Atraccion> atracciones;
+	public static LinkedList<Atraccion> listaParaInteractuar;
+
 	
-	
-	
-	public static List<Atraccion> leerAtracciones() {
-		File f = new File("files/Atracciones.txt");
-		Scanner sc;
-		List<Atraccion> atracciones = new LinkedList<Atraccion>();
-		String[] line;
-		
-		try {
-			sc = new Scanner(f);
-			
-			while(sc.hasNextLine()) {
-				line = sc.nextLine().split("-");
-				atracciones.add(new Atraccion(
-						line[0],
-						Integer.parseInt(line[1]),
-						Double.parseDouble(line[2]),
-						Integer.parseInt(line[3]),
-						TipoDeAtraccion.valueOf(line[4])
-												)
-								);
+	public static void main(String[] args) {
+		List<Ofertables> sugerencia = new LinkedList<Ofertables>();
+		List<Atraccion> atracciones = AdministradorDeArchivos.leerAtracciones();
+		List<Usuario> users = AdministradorDeArchivos.leerUsuarios();
+		List<Promocion> packs = AdministradorDeArchivos.leerPromociones(atracciones);
+		sugerencia.addAll(packs);
+		sugerencia.addAll(atracciones);
+		try (Scanner scanner = new Scanner(System.in)) {
+			for (Usuario usuario:users) {
+				System.out.println("Bienvenido "+ usuario.getNombre()+"\nUsted cuenta con "+ usuario.getPresupuesto()+" monedas y un tiempo disponible de "+ usuario.getTiempoDisponible()+"Hs.");
+				sugerencia.sort(new ComparadorParaSugerencias(usuario.getAtraccionPreferida()));
 				
-				line = null;
-			}
-			
-			sc.close();
-		} catch (FileNotFoundException e) {
-			System.err.println(e.getMessage());
-		} catch (NumberFormatException e) {
-			System.err.println(e.getMessage());
-		}
-		
-		return atracciones;
-	}
-	public static List<Promocion> leerPromociones() {
-		File f = new File("files/Promociones.txt");
-		Scanner sc;
-		List<Promocion> promociones = new LinkedList<Promocion>();
-		String[] line;
-		
-		try {
-			sc = new Scanner(f);
-			//String[] atraccionesStr;
-			while(sc.hasNextLine()) {
-				String[] atraccionesStr;
-				
-				line = sc.nextLine().split("-");
-				List<Atraccion> atrDeLaPromo = new LinkedList<Atraccion>();
-				atraccionesStr = line[0].split(", ");
-				for (Atraccion atr: leerAtracciones()) {
-					for (String str: atraccionesStr) {
-						if (atr.getNombre().equals(str)) {
-							atrDeLaPromo.add(atr);
+				for(Ofertables oferta:sugerencia) {
+//				System.out.println(oferta);
+					
+					if (usuario.puedeComprar(oferta)) {
+						System.out.println(oferta);	
+						System.out.print("Ingrese S para aceptar o N para no hacerlo: ");
+						String in1 = scanner.nextLine();
+						if (in1.toUpperCase().equals("S")) {
+							usuario.agregarAlItinerario(oferta);
 						}
 					}
-					
+//					else {
+//						System.out.println("La oferta:\n"+oferta.toString()+"\nNo puede ser adquirida por este usuario\n"+usuario.toString()+"\n------------------------------------------");
+//					}
 				}
-				
-			System.out.println("-----------------");
-				System.out.println(atrDeLaPromo);
-				System.out.println(line[0]);
-				System.out.println(line[1]);
-				System.out.println(line[2]);
-				//if (line[2] == "0") {
-				if ( Integer.parseInt(line[2]) == 0) {
-					Promocion promoDescuento = new Promocion(atrDeLaPromo, 20.0);
-					System.out.println("----------"+promoDescuento);
-					promociones.add(new Promocion(atrDeLaPromo, 20.0));
-					System.out.println("double");
-				}
-				//else if (line[2] == "1") {
-				else if (Integer.parseInt(line[2]) == 1) {
-					promociones.add(new Promocion(atrDeLaPromo, Integer.parseInt(line[1])));
-					System.out.println("int");
-				}
-				else {
-					System.out.println("lqs");
-					for (Atraccion atr: leerAtracciones()) {
-						if (atr.getNombre().equals(line[2])) {
-								promociones.add(new Promocion(atrDeLaPromo, atr));
-							}
-					}
-				}
-				line = null;
+				System.out.println("Terminaron las sugerencias para este usuario\nPresione enter para continuar...");
+				String in1 = scanner.nextLine();
+				System.out.println("\nEscribir\n");
+				AdministradorDeArchivos.escribirAtracciones(usuario.getItinerario(), usuario);	
 			}
-			
-			sc.close();
-		} catch (FileNotFoundException e) {
-			System.err.println(e.getMessage());
-		} catch (NumberFormatException e) {
-			System.err.println(e.getMessage());
+			String in1 = scanner.nextLine();
+			System.out.println(in1);
 		}
-		
-		return promociones;
-	}
-	
-	
-//	public static Atracciones[] leerAtracciones() {
-//		Atracciones[] atracciones = new Atracciones[10];
-//		//aca lee atracciones.txt
-//		return atracciones;
-//	}
-//	public static List<Promociones> leerPromociones() {
-//		File f = new File("files/Promociones.txt");
-//		Scanner sc;
-//		List<Promociones> atracciones = new LinkedList<Promociones>();
-//		String[] line;
-//		
-//		try {
-//			sc = new Scanner(f);
-//			
-//			while(sc.hasNextLine()) {
-//				line = sc.nextLine().split("-");
-//				atracciones.add(new Promociones(
-//												)
-//								);
-//				
-//				line = null;
-//			}
-//			
-//			sc.close();
-//		} catch (FileNotFoundException e) {
-//			System.err.println(e.getMessage());
-//		} catch (NumberFormatException e) {
-//			System.err.println(e.getMessage());
-//		}
-//		
-//		return atracciones;
-//	}
-//	public static void main(){
-//	   Usuario[] misUsuarios = leerUsuarios();
-//	   Atracciones[] misAtracciones = leerAtracciones();
-//	}
-	public static void main(String[] args) {
-		List<Usuario> users = App.leerUsuarios();
-//		for (Usuario user:users) {
-//			System.out.println(user);}
-		List<Atraccion> atracs = App.leerAtracciones();
-//		for (Atraccion atr:atracs) {
-//				System.out.println(atr);
-			
-		List<Promocion> packs = App.leerPromociones();
-		System.out.println("----------PACK----------");
-		System.out.println(packs); //imprime vacio
-		for (Promocion pack:packs) {
-				System.out.println(pack);
-		}
-		
-	}
-	
+		//Escribe en el archivo atraccionesOUT.txt	
+		System.out.println("\nEscribir\n");
+//		AdministradorDeArchivos2.escribirAtracciones(atracciones);	
+	}	
 }
-

@@ -1,8 +1,8 @@
-Atraccion [nombre=Mordor, costo=25, tiempo=3.0, cupos=3, tipoDeAtraccion=Aventura]
-Atraccion [nombre=Moria, costo=10, tiempo=2.0, cupos=5, tipoDeAtraccion=Aventura]
-Atraccion [nombre=Bosque Negro, costo=3, tiempo=4.0, cupos=11, tipoDeAtraccion=Aventura]
-Atraccion [nombre=La Comarca, costo=3, tiempo=6.5, cupos=149, tipoDeAtraccion=Degustacion]
-Atraccion [nombre=Lothlórien, costo=35, tiempo=1.0, cupos=29, tipoDeAtraccion=Degustacion]
-Atraccion [nombre=Minas Tirith, costo=5, tiempo=2.5, cupos=24, tipoDeAtraccion=Paisaje]
-Atraccion [nombre=Abismo de Helm, costo=5, tiempo=2.0, cupos=14, tipoDeAtraccion=Paisaje]
-Atraccion [nombre=Erebor, costo=12, tiempo=3.0, cupos=31, tipoDeAtraccion=Paisaje]
+Atraccion Mordor tiene un costo de 25 monedas, es de tipo Aventura, y se debe disponer de 3.0hs para recorrerla. Tiene un cupo de 3 personas
+Atraccion Bosque Negro tiene un costo de 3 monedas, es de tipo Aventura, y se debe disponer de 4.0hs para recorrerla. Tiene un cupo de 11 personas
+Atraccion Moria tiene un costo de 10 monedas, es de tipo Aventura, y se debe disponer de 2.0hs para recorrerla. Tiene un cupo de 5 personas
+Atraccion La Comarca tiene un costo de 3 monedas, es de tipo Degustacion, y se debe disponer de 6.5hs para recorrerla. Tiene un cupo de 149 personas
+Atraccion Lothlórien tiene un costo de 35 monedas, es de tipo Degustacion, y se debe disponer de 1.0hs para recorrerla. Tiene un cupo de 29 personas
+Atraccion Minas Tirith tiene un costo de 5 monedas, es de tipo Paisaje, y se debe disponer de 2.5hs para recorrerla. Tiene un cupo de 24 personas
+Atraccion Abismo de Helm tiene un costo de 5 monedas, es de tipo Paisaje, y se debe disponer de 2.0hs para recorrerla. Tiene un cupo de 14 personas
+Atraccion Erebor tiene un costo de 12 monedas, es de tipo Paisaje, y se debe disponer de 3.0hs para recorrerla. Tiene un cupo de 31 personas

@@ -18,3 +18,21 @@
 ❌ya compro x atraccion, que lo que haga seria recorrer el itinerari oy fijarse si alguna es equals o si alguna es promocion, recorrer sus promociones y fijarse con equals (Preguntar a Ignacio)
 ❌archivos txt de salida totalizador de itinerarios y el ofertador de atracciones/paquetes.
 ❌fantan test
+
+
+
+
+Atraccion -> esOContiene(otra)
+... verifica equals
+
+Promocion -> esOContiene(otra)
+... verifica equals
+otra.esPromocion?
+No... verifica si esta tiene a otra en sus atracciones
+Si... verifica si esta tiene a una atraccion que la otra promo tien
+
+if(this.equals(otra)) return true
+for(Atraccion a: this.atracciones)
+   if(otra.esOContiene(a)) return true
+
+return false

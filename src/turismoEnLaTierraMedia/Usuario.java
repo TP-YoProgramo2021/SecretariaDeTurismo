@@ -43,16 +43,10 @@ public class Usuario {
 	}
 	public boolean puedeComprar(Ofertables oferta) {
 		for (Ofertables atraccion:this.itinerario) {
-			if (atraccion.equals(oferta)) {
-				System.out.println("Entro al if");
+			if (oferta.esOContiene(atraccion)) {
 				return false;
 			}
-			
-			
-			System.out.println("Fuera del if");
-			
 		}
-		System.out.println("Fuera del for");
 		return (this.presupuesto >= oferta.getCosto()) && (this.getTiempoDisponible()>=oferta.getTiempo()) && (oferta.hayCupo());	
 				}
 	public void cobrar(Ofertables atraccion) throws Exception {
@@ -101,6 +95,6 @@ public class Usuario {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-	System.out.println("\n¡Ya fue agregado al itinerario!\n");
+	System.out.println("\n¡Ya fue agregado al itinerario!\nTenga en mente que usted aun cuenta con "+ this.getPresupuesto()+" monedas y un tiempo disponible de "+ this.getTiempoDisponible()+"Hs.");
 	}
 }

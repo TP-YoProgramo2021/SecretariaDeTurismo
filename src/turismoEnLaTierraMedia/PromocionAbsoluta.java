@@ -11,8 +11,12 @@ public class PromocionAbsoluta extends Promocion{
 	}
 	@Override
 	public String toString() {
-		return "Pack " + getTipo() + "[atracciones=" + atracciones + ", precioPorTodo=" + precioPorTodo + ", getCosto()="
-				+ getCosto() + ", getTiempo()=" + getTiempo() +  "]";
+		String nombres = "";
+		for (Atraccion atr: this.atracciones) {
+			nombres+=(atr.getNombre() + "-");
+		}
+		nombres=nombres.substring(0, nombres.length()-1);
+		return ("Promocion "+this.getTipo()+ " incluye "+nombres+" a un costo de "+this.getCosto() +" monedas. Debe disponer de "+this.getTiempo()+"hs para recorrerlo.");
 	}
 	@Override
 	public int getCosto() {

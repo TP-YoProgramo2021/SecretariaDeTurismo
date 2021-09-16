@@ -2,6 +2,7 @@ package turismoEnLaTierraMedia;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 
 public abstract class Promocion implements Ofertables{
 	protected List<Atraccion> atracciones;
@@ -59,9 +60,36 @@ public abstract class Promocion implements Ofertables{
 		}
 		return tiempoTotal;
 	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(atrGratis, atracciones, porcentajeDesc, precioPorTodo);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Promocion other = (Promocion) obj;
+		return Objects.equals(atrGratis, other.atrGratis) && Objects.equals(atracciones, other.atracciones)
+				&& Double.doubleToLongBits(porcentajeDesc) == Double.doubleToLongBits(other.porcentajeDesc)
+				&& precioPorTodo == other.precioPorTodo;
+	}
+
 	public TipoDeAtraccion getTipo() {return this.atracciones.get(0).getTipo();}
 	@Override
-	public boolean esOContiene(Ofertables oferta) {
+	public boolean esOContiene (Ofertables otra) {
+		if (this.equals(otra)) return true;
+		if (!otra.esPromocion()) {
+			return this.atraccionesIncluidas().contains(otra);
+		}
+		for (Atraccion atr:this.atraccionesIncluidas()) {
+			if (otra.esOContiene(atr)) return true;
+		}
 		return false;
 	}
 	
